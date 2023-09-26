@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proyecto 1</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="../css/animacion.css">
+    <link rel="shortcut icon" href="../img/logoGC.png" type="image/x-icon">
+</head>
+
+<body>
+    <header class="sticky-top">
+        <nav class="navbar navbar-expand-lg color-nav">
+            <div class="container-fluid">
+                <a href="../index.html"><img class="gcLogo" src="../img/logoGC.png" alt="logoGC"></a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="quienesSomos.html">Quiénes somos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="proyecto.html">Proyecto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="actividades.html">Actividades</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active rounded-5" href="colaborar.html">Colaborar</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="inscripciones.html">Inscripciones</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="img-home banner4 p-5">
+            <div class="text-img-qs d-flex flex-column align-items-center justify-content-end ani-title">
+                <h1 class="p-3 ch1 text-center rounded-4">Colaborar</h1>
+            </div>
+        </div>
+        <section>
+            <div class="container container-fluid m-custom mb-custom">
+                <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+                    <img class="img-colaborar img-fluid rounded-4" src="../img/img-colaborar2.jpg" alt="img-colaborar">
+                    <p class="mt-2 text-colaborar">Tú también puedes ser voluntari@ en ProyectoGC! ¿Te consideras una
+                        persona ética, solidaria, dinámica, con iniciativa, a la que le gusta trabajar en equipo? Te
+                        invitamos a que te sumes a nuestro equipo y contribuyas a la construcción de un gran movimiento
+                        global para conseguir ser un instrumento de desarrollo integral y transformación social en el
+                        largo plazo mediante la formación y educación.</p>
+                    <button type="button" class="btn btn-danger mt-3 btn-colaborar" data-bs-toggle="modal" data-bs-target="#exampleModal">Hazte Voluntario</button>
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel">Completa el formulario para que te podamos contactar</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-dark">
+                                    <form action="/api/v1/create/voluntary" method="post" class="mt-1 p-3 form-inscripcion">
+                                        <div class="mb-3">
+                                            <label for="validationCustom06" class="form-label">Nombre</label>
+                                            <input type="text" id="validationCustom06" name="name" class="form-control"
+                                                placeholder="Nombre y Apelliso (Padre/Madre/Tutor)" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationCustom07" class="form-label">Email</label>
+                                            <input type="email" id="validationCustom07" name="email" class="form-control"
+                                                aria-describedby="emailHelp" placeholder="Email@mail.com" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationCustom08" class="form-label">Número de teléfono</label>
+                                            <input type="number" id="validationCustom08" name="phoneNumber" class="form-control" placeholder="(+54)" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationCustom09" class="form-label">Turno</label>
+                                            <select class="form-select" name="shift" id="validationCustom09" aria-label="Default select example" required>
+                                                <option selected disabled value="">Turno</option>
+                                                <option value="DIURNO">DIURNO</option>
+                                                <option value="VESPERTINO">VESPERTINO</option>
+                                            </select>
+                                        </div>
+                                        <p>Te contactaremos!</p>
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+                    <img class="img-colaborar img-fluid rounded-4" src="../img/img-colaborar3.jpg" alt="img-colaborar">
+                    <p class="mt-2 text-colaborar">Tú aportación es muy valiosa e importante, ya que permite que
+                        podamos financiarnos de una forma sostenible, autónoma e independiente. <br>Llevando a cabo
+                        nuestra misión, visión, valores y fines fundacionales puedes ayudar a nuestro proyecto de
+                        formación y educativos.</p>
+                    <button type="button" class="btn btn-warning mt-3 btn-colaborar" data-bs-toggle="modal" data-bs-target="#exampleModal01">Haz una Donacion</button>
+                    <div class="modal fade" id="exampleModal01" tabindex="-1" aria-labelledby="exampleModalLabel01"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel01">Puedes hacer una donacion en la siguiente cuenta bancaria:</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-dark text-center">
+                                    <p><b>Titular:</b> Fundacion GC</p>
+                                    <p><b>Banco:</b> Santander</p>
+                                    <p><b>Cuenta:</b> 12-345678-9</p>
+                                    <p><b>Rut:</b> 12.345.678-9</p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="d-flex flex-column justify-content-center align-items-center mt-5">
+                    <img class="img-colaborar img-fluid rounded-4" src="../img/img-colaborar.jpg" alt="img-colaborar">
+                    <p class="mt-2 text-colaborar">Si eres una asociación/fundación sin ánimo de lucro, emprendedor o
+                        emprendedor social, que comparte nuestros objetivos fundacionales, visión, misión y valores,
+                        puedes ser parte de nuestros asociados. Como particular también puedes apoyar tales iniciativas
+                        y proyectos, tanto propios como promovidos por entidades externas.</p>
+                    <button type="button" class="btn btn-success mt-3 btn-colaborar" data-bs-toggle="modal" data-bs-target="#exampleModal02">Hazte Asociado</button>
+                    <div class="modal fade" id="exampleModal02" tabindex="-1" aria-labelledby="exampleModalLabel02"
+                        aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5 text-dark" id="exampleModalLabel02">Para ser parte de nuestros socios completa el siguiente formulario:</h1>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-dark">
+                                    <form action="/api/v1/create/affiliate" method="post" class="mt-1 p-3 form-inscripcion">
+                                        <div class="mb-3">
+                                            <label for="validationCustom10" class="form-label">Nombre</label>
+                                            <input type="text" id="validationCustom10" name="name" class="form-control"
+                                                placeholder="Nombre y Apelliso (Padre/Madre/Tutor)" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationCustom11" class="form-label">Email</label>
+                                            <input type="email" id="validationCustom11" name="email" class="form-control"
+                                                aria-describedby="emailHelp" placeholder="Email@mail.com" required>
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="validationCustom12" class="form-label">Número de teléfono</label>
+                                            <input type="number" name="phoneNumber" id="validationCustom12" class="form-control" placeholder="(+54)" required>
+                                        </div>
+                                        <p>Te contactaremos!</p>
+                                        <button type="submit" class="btn btn-primary">Enviar</button>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </section>
+    </main>
+
+
+
+    <footer class="p-5">
+        <div class="row">
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <h1 class="text-sm1">Contáctanos</h1>
+                <ul class="d-flex flex-column justify-content-center text-footer cf">
+                    <li class="text-sm2">Manzoni 1360, Gonzalez Catán, Provincia de Buenos Aires</li>
+                    <li class="text-sm2">Tel. (54)5277 0815</li>
+                    <li class="text-sm2">info@proyectogc.org</li>
+                </ul>
+                <ul>
+                    <a href="https://www.instagram.com/" class="mr-1" target="_blank"><img class="logos-footer l-i"
+                            src="../img/logo-instagram.png"></a>
+                    <a href="https://www.facebook.com/" target="_blank"><img class="logos-footer l-f"
+                            src="../img/logo-facebook.png"></a>
+                    <a href="https://twitter.com/" target="_blank"><img class="logos-footer"
+                            src="../img/logo-twitter.png"></a>
+                    <img class="logos-footer" src="../img/logoGC.png" alt="gclogo">
+                </ul>
+            </div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <form action="/api/v1/create" method="post">
+                    <div class="mb-2">
+                        <label class="form-label">Nombre</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="Nombre y Apellido" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Email</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="email@mail.com" required>
+                    </div>
+                    <div class="mb-2">
+                        <label class="form-label">Mensaje</label>
+                        <textarea class="form-control" id="comentario" name="message" rows="3" placeholder="Escribenos tu mensaje" required></textarea>
+                    </div>
+                    <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
+                </form>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+
+</html>
