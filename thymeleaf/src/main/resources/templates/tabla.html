@@ -1,0 +1,39 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org" lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body style="background-color: rgb(201, 163, 117);" class="container">
+<div class="container mt-5">
+    <table border="1" class="table table-dark table-bordered">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Mensaje</th>
+            <th>Fecha</th>
+            <th>Eliminar</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="contact : ${tabla}">
+            <td th:text="${contact.name}">Nombre</td>
+            <td th:text="${contact.email}">Correo</td>
+            <td th:text="${contact.message}">Mensaje</td>
+            <td th:text="${#temporals.format(contact.date, 'dd/MM/YYYY hh:mm a')}">Fecha</td>
+            <td>
+                <a class="btn btn-danger" th:href="@{/eliminar/{id}(id=${contact.id})}">Eliminar</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+

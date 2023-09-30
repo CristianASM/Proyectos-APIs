@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="es" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>form</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+
+<body style="background-color: rgb(201, 163, 117);" class="container">
+    <div class="container mt-5">
+        <form th:action="@{/form}" th:object="${objectForm}" method="post">
+            <div class="mb-2">
+                <label class="form-label">Nombre</label>
+                <input type="text" id="name" th:field="*{name}" class="form-control" placeholder="Nombre y Apellido" required="">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Email</label>
+                <input type="email" id="email" th:field="*{email}" class="form-control" placeholder="email@mail.com" required="">
+            </div>
+            <div class="mb-2">
+                <label class="form-label">Mensaje</label>
+                <textarea class="form-control" id="comentario" th:field="*{message}" rows="3" placeholder="Escribenos tu mensaje"
+                          required=""></textarea>
+            </div>
+            <button type="submit" id="enviar" class="btn btn-primary">Enviar</button>
+        </form>
+    </div>
+</body>
+</html>
