@@ -6,6 +6,8 @@ import com.integrador.proyecto01.Service.VoluntaryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +16,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/v1")
 public class VoluntaryController {
+    private final VoluntaryServiceImpl voluntaryService;
+    private final JavaMailSender javaMailSender;
     @Autowired
-    private VoluntaryServiceImpl voluntaryService;
+    public VoluntaryController(VoluntaryServiceImpl voluntaryService, JavaMailSender javaMailSender) {
+        this.voluntaryService = voluntaryService;
+        this.javaMailSender = javaMailSender;
+    }
 
     @PostMapping("/create/voluntary")
     public String createVoluntary(@RequestParam("name") String name, @RequestParam("email") String email,
@@ -26,6 +33,12 @@ public class VoluntaryController {
         newVoluntary.setPhoneNumber(phoneNumber);
         newVoluntary.setShift(shift);
         voluntaryService.save(newVoluntary);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo("integradorproyecto001@gmail.com");
+        mailMessage.setSubject("Nuevo formulario de voluntario enviado");
+        mailMessage.setText("Nombre: " + name + "\nCorreo: " + email + "\nNumero de telefono: " + phoneNumber + "\nTurno: " + shift);
+        javaMailSender.send(mailMessage);
         return "redirect:/confirmacion.html";
     }
 

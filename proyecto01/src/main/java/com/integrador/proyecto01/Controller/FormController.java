@@ -5,6 +5,8 @@ import com.integrador.proyecto01.Service.FormServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,8 +16,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/v1")
 public class FormController {
+    private final FormServiceImpl formService;
+    private final JavaMailSender javaMailSender;
     @Autowired
-    private FormServiceImpl formService;
+    public FormController(FormServiceImpl formService, JavaMailSender javaMailSender) {
+        this.formService = formService;
+        this.javaMailSender = javaMailSender;
+    }
 
     @PostMapping("/create")
     public String createForm(@RequestParam("name") String name, @RequestParam("email") String email, @RequestParam("message") String message){
@@ -25,6 +32,12 @@ public class FormController {
         newForm.setMessage(message);
         newForm.setDate(LocalDate.now());
         formService.create(newForm);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo("integradorproyecto001@gmail.com");
+        mailMessage.setSubject("Nuevo formulario de contacto enviado");
+        mailMessage.setText("Nombre: " + name + "\nCorreo: " + email + "\nMensaje: " + message);
+        javaMailSender.send(mailMessage);
         return "redirect:/confirmacion.html";
     }
 

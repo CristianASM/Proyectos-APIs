@@ -1,16 +1,21 @@
 package com.integrador.proyecto01.Service;
 
+import com.integrador.proyecto01.Exceptions.FormNotFoundException;
 import com.integrador.proyecto01.Model.Voluntary;
 import com.integrador.proyecto01.Repository.IVoluntaryRepository;
+import com.integrador.proyecto01.Service.IService.IVoluntaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-public class VoluntaryServiceImpl implements IVoluntaryService{
+public class VoluntaryServiceImpl implements IVoluntaryService {
+    private final IVoluntaryRepository voluntaryRepository;
     @Autowired
-    private IVoluntaryRepository voluntaryRepository;
+    public VoluntaryServiceImpl(IVoluntaryRepository voluntaryRepository) {
+        this.voluntaryRepository = voluntaryRepository;
+    }
 
     @Override
     public Voluntary save(Voluntary voluntary) {
@@ -19,7 +24,7 @@ public class VoluntaryServiceImpl implements IVoluntaryService{
 
     @Override
     public Voluntary getById(Long id) {
-        return voluntaryRepository.findById(id).orElse(null);
+        return voluntaryRepository.findById(id).orElseThrow(() -> new FormNotFoundException("Formulario no encontrado"));
     }
 
     @Override
@@ -29,6 +34,7 @@ public class VoluntaryServiceImpl implements IVoluntaryService{
 
     @Override
     public void deleteById(Long id) {
+        voluntaryRepository.findById(id).orElseThrow(() -> new FormNotFoundException("Formulario no encontrado"));
         voluntaryRepository.deleteById(id);
     }
 }

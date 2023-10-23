@@ -1,4 +1,4 @@
-package com.integrador.proyecto01.Service;
+package com.integrador.proyecto01.Service.IService;
 
 import com.integrador.proyecto01.Model.Form;
 

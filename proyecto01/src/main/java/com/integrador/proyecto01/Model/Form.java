@@ -14,11 +14,11 @@ public class Form {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    @Column(name = "nombre", nullable = false)
+    @Column(name = "nombre", nullable = false, length = 45)
     private String name;
-    @Column(name = "correo", nullable = false)
+    @Column(name = "correo", nullable = false, length = 45)
     private String email;
-    @Column(name = "mensaje", nullable = false)
+    @Column(name = "mensaje", nullable = false, length = 300)
     private String message;
     @Column(name = "fecha_creacion", nullable = false)
     private LocalDate date;

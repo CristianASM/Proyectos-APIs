@@ -6,6 +6,8 @@ import com.integrador.proyecto01.Service.InscriptionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +16,13 @@ import java.util.List;
 @Controller
 @RequestMapping("/api/v1")
 public class InscriptionController {
-
+    private final InscriptionServiceImpl inscriptionService;
+    private final JavaMailSender javaMailSender;
     @Autowired
-    private InscriptionServiceImpl inscriptionService;
+    public InscriptionController(InscriptionServiceImpl inscriptionService, JavaMailSender javaMailSender) {
+        this.inscriptionService = inscriptionService;
+        this.javaMailSender = javaMailSender;
+    }
 
     @PostMapping("/create/inscription")
     public String createInscription(@RequestParam("name") String name, @RequestParam("studentName") String studentName, @RequestParam("email") String email,
@@ -29,6 +35,12 @@ public class InscriptionController {
         newInscription.setShift(shift);
         newInscription.setMessage(message);
         inscriptionService.save(newInscription);
+
+        SimpleMailMessage mailMessage = new SimpleMailMessage();
+        mailMessage.setTo("integradorproyecto001@gmail.com");
+        mailMessage.setSubject("Nuevo formulario de inscripcion enviado");
+        mailMessage.setText("Nombre: " + name + "\nNombre del estudiante: " + studentName + "\nCorreo: " + email + "\nNumero de telefono: " + phoneNumber+ "\nTurno: " + shift+ "\nMensaje: " + message);
+        javaMailSender.send(mailMessage);
         return "redirect:/confirmacion.html";
     }
 
